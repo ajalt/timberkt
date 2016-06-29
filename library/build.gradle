@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    compile 'com.jakewharton.timber:timber:4.1.2'
+
+    testCompile 'junit:junit:4.12'
+    testCompile('com.nhaarman:mockito-kotlin:0.5.0') { exclude module: 'kotlin-stdlib' }
+    testCompile 'org.assertj:assertj-core:2.4.1'
+    testCompile 'org.robolectric:robolectric:3.1'
+}
+
