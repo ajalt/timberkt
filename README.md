@@ -20,6 +20,12 @@ The same message and tags will be logged in all three cases.
 
 The Kotlin extensions have the advantage if being more convenient to write, but are also more performant in some circumstances, since the passed block is only evaluated if the message is logged. Even if the message is logged to multiple trees, the block is only evaluated once.
 
+## What about Timber's lint warnings?
+
+Timber comes with half a dozen custom lint checks that help you spot incorrect usage of the log calls. 
+
+All but one of those checks are for problems that are impossible with this library. You can to perform arbitrary code inside of the blocks passed to the log extensions. There's no risk of performance problems in your release code since the blocks won't be evaluated.
+
 ## Download
 
 ```groovy
