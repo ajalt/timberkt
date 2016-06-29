@@ -1,16 +1,13 @@
-package com.github.ajalt.timberkt
+package com.github.ajalt.timberkt.sample
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.github.ajalt.timberkt.Timber
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        if (BuildConfig.DEBUG) {
-            timber.log.Timber.plant(timber.log.Timber.DebugTree());
-        }
 
         var i = 0
         Timber.d {"log ${i++}"}
