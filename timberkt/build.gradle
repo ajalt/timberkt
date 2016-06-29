@@ -1,19 +1,15 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
-repositories {
-    mavenCentral()
-}
-
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode Integer.parseInt(project.VERSION_CODE)
+        versionName project.VERSION_NAME
     }
     buildTypes {
         release {
@@ -27,13 +23,12 @@ android {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile rootProject.ext.kotlinStdlib
+    compile rootProject.ext.timber
 
-    compile 'com.jakewharton.timber:timber:4.1.2'
-
-    testCompile 'junit:junit:4.12'
-    testCompile('com.nhaarman:mockito-kotlin:0.5.0') { exclude module: 'kotlin-stdlib' }
-    testCompile 'org.assertj:assertj-core:2.4.1'
-    testCompile 'org.robolectric:robolectric:3.1'
+    testCompile rootProject.ext.junit
+    testCompile(rootProject.ext.mockitoKotlin) { exclude module: 'kotlin-stdlib' }
+    testCompile rootProject.ext.assertj
+    testCompile rootProject.ext.roboelectric
 }
 

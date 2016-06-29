@@ -2,21 +2,23 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.github.ajalt.timber_kt"
-        minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        applicationId "com.github.ajalt.timberkt"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode Integer.parseInt(project.VERSION_CODE)
+        versionName project.VERSION_NAME
     }
+
     buildTypes {
         release {
             minifyEnabled false
         }
     }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -24,11 +26,8 @@ android {
 
 dependencies {
     compile project(':timberkt')
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    compile 'com.jakewharton.timber:timber:4.1.2'
-}
-repositories {
-    mavenCentral()
+    compile rootProject.ext.supportV7
+    compile rootProject.ext.kotlinStdlib
+    compile rootProject.ext.timber
 }
