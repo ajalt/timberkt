@@ -28,7 +28,13 @@ All but one of those checks are for problems that are impossible with this libra
 
 ## Download
 
+The Kotlin extensions for Timber are distributed with [JitPack](https://jitpack.io/).
+
 ```groovy
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
 compile 'com.github.ajalt:timberkt:1.1.0'
 ```
 
