@@ -161,6 +161,7 @@ inline fun wtf(noinline message: () -> String) = Timber.wtf("%s", LazyString(mes
 /** Log an assert exception and a message that will be evaluated lazily when the message is printed */
 inline fun wtf(t: Throwable, noinline message: () -> String) = Timber.wtf(t, "%s", LazyString(message))
 
+/** @suppress */
 class LazyString(val initializer: () -> String) {
     val string: String by lazy(initializer)
     override fun toString() = string
