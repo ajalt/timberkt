@@ -1,6 +1,6 @@
 # Kotlin extensions for Timber
 
-Jake Wharton's [Timber](https://github.com/JakeWharton/timber) library is great. It's a Java library with an API that works well for Java, but that isn't as idiomatic for Kotlin. 
+Jake Wharton's [Timber](https://github.com/JakeWharton/timber) library is great. It's a Java library with an API that works well for Java, but that isn't as idiomatic when used in Kotlin. 
 
 This library builds on Timber with an API that's easier to use from Kotlin. Instead of using formatting parameters, you pass a lambda that is only evaluated if the message is logged.
 
@@ -18,13 +18,25 @@ d { "${intVar + 3} ${stringFun()}" }
 
 The same message and tags will be logged in all three cases. 
 
-The Kotlin extensions have the advantage if being more convenient to write, but are also more performant in some circumstances, since the passed block is only evaluated if the message is logged. Even if the message is logged to multiple trees, the block is only evaluated once.
+The Kotlin extensions have the advantage of being more convenient to write, and are also more performant in some circumstances. The passed block is only evaluated if the message is logged, so even if the message is logged to multiple trees, the block is only evaluated once.
 
-## What about Timber's lint warnings?
+Logging exception objects works the same way:
 
-Timber comes with half a dozen custom lint checks that help you spot incorrect usage of the log calls. 
+```kotlin
+// Standard timber
+Timber.e(exception, "%d exceptions", errorCount)
 
-All but one of those checks are for problems that are impossible with this library. You can to perform arbitrary code inside of the blocks passed to the log extensions. There's no risk of performance problems in your release code since the blocks won't be evaluated.
+// Kotlin extensions
+Timber.e(exception) { "$errorCount exceptions" }
+// or
+e(exception) { "$errorCount exceptions" }
+```
+
+## What about Timber's custom lint checks?
+
+Timber comes with half a dozen lint checks that help you spot incorrect usage of the log calls. 
+
+With the exception of long custom tags, none of the errors those checks look for are possible with this library. You can perform arbitrary code inside of the lambdas passed to the log extensions, and there's no risk of performance problems in your release code since the blocks won't be evaluated unless the messages are printed.
 
 ## Download
 
