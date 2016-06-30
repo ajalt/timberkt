@@ -6,6 +6,9 @@ This library builds on Timber with an API that's easier to use from Kotlin. Inst
 
 ## Usage
 
+1. Configure any `Tree` instances in your Application's `onCreate`, the same way as with plain [Timber](https://github.com/JakeWharton/timber#usage).
+2. Call the extension functions from anywhere in your code.
+
 ```kotlin
 // Standard timber
 Timber.d("%d %s", intVar + 3, stringFun())
@@ -18,7 +21,7 @@ d { "${intVar + 3} ${stringFun()}" }
 
 The same message and tags will be logged in all three cases. 
 
-The Kotlin extensions have the advantage of being more convenient to write, and are also more performant in some circumstances. The passed block is only evaluated if the message is logged, so even if the message is logged to multiple trees, the block is only evaluated once.
+The Kotlin extensions have the advantage of being more convenient to write, and are also more performant in some circumstances. The passed block is only evaluated if the message is logged, and even if the message is logged to multiple trees, the block is only evaluated once.
 
 Logging exception objects works the same way:
 
