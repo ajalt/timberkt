@@ -50,7 +50,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
-compile 'com.github.ajalt:timberkt:1.1.0'
+compile 'com.github.ajalt:timberkt:1.2.0'
 ```
 
 ## License
