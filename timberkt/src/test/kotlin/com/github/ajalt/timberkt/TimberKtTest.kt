@@ -14,7 +14,7 @@ data class Msg(val priority: Int, val tag: String?, val message: String?, val t:
 @Config(manifest = Config.NONE)
 class TimberKtTest {
     @Before @After fun setup() {
-        Timber.uprootAll();
+        Timber.uprootAll()
     }
 
     @Test
@@ -26,24 +26,24 @@ class TimberKtTest {
             }
         })
 
-        v { "Verbose" };
-        Timber.v { "Verbose" };
-        Timber.tag("Custom").v { "Verbose" };
-        d { "Debug" };
-        Timber.d { "Debug" };
-        Timber.tag("Custom").d { "Debug" };
-        i { "Info" };
-        Timber.i { "Info" };
-        Timber.tag("Custom").i { "Info" };
-        w { "Warn" };
-        Timber.w { "Warn" };
-        Timber.tag("Custom").w { "Warn" };
-        e { "Error" };
-        Timber.e { "Error" };
-        Timber.tag("Custom").e { "Error" };
-        wtf { "Assert" };
-        Timber.wtf { "Assert" };
-        Timber.tag("Custom").wtf { "Assert" };
+        v { "Verbose" }
+        Timber.v { "Verbose" }
+        Timber.tag("Custom").v { "Verbose" }
+        d { "Debug" }
+        Timber.d { "Debug" }
+        Timber.tag("Custom").d { "Debug" }
+        i { "Info" }
+        Timber.i { "Info" }
+        Timber.tag("Custom").i { "Info" }
+        w { "Warn" }
+        Timber.w { "Warn" }
+        Timber.tag("Custom").w { "Warn" }
+        e { "Error" }
+        Timber.e { "Error" }
+        Timber.tag("Custom").e { "Error" }
+        wtf { "Assert" }
+        Timber.wtf { "Assert" }
+        Timber.tag("Custom").wtf { "Assert" }
 
         assertThat(messages).containsExactly(
                 Msg(2, "TimberKtTest", "Verbose", null),
@@ -79,24 +79,24 @@ class TimberKtTest {
 
         val e = Exception("e")
 
-        v(e) { "Verbose" };
-        Timber.v(e) { "Verbose" };
-        Timber.tag("Custom").v(e) { "Verbose" };
-        d(e) { "Debug" };
-        Timber.d(e) { "Debug" };
-        Timber.tag("Custom").d(e) { "Debug" };
-        i(e) { "Info" };
-        Timber.i(e) { "Info" };
-        Timber.tag("Custom").i(e) { "Info" };
-        w(e) { "Warn" };
-        Timber.w(e) { "Warn" };
-        Timber.tag("Custom").w(e) { "Warn" };
-        e(e) { "Error" };
-        Timber.e(e) { "Error" };
-        Timber.tag("Custom").e(e) { "Error" };
-        wtf(e) { "Assert" };
-        Timber.wtf(e) { "Assert" };
-        Timber.tag("Custom").wtf(e) { "Assert" };
+        v(e) { "Verbose" }
+        Timber.v(e) { "Verbose" }
+        Timber.tag("Custom").v(e) { "Verbose" }
+        d(e) { "Debug" }
+        Timber.d(e) { "Debug" }
+        Timber.tag("Custom").d(e) { "Debug" }
+        i(e) { "Info" }
+        Timber.i(e) { "Info" }
+        Timber.tag("Custom").i(e) { "Info" }
+        w(e) { "Warn" }
+        Timber.w(e) { "Warn" }
+        Timber.tag("Custom").w(e) { "Warn" }
+        e(e) { "Error" }
+        Timber.e(e) { "Error" }
+        Timber.tag("Custom").e(e) { "Error" }
+        wtf(e) { "Assert" }
+        Timber.wtf(e) { "Assert" }
+        Timber.tag("Custom").wtf(e) { "Assert" }
 
         assertThat(messages).containsExactly(
                 Msg(2, "TimberKtTest", null, e),
@@ -124,9 +124,9 @@ class TimberKtTest {
     fun lazyMessage_noTree() {
         var i = 0
 
-        d { "${i++}" };
-        Timber.d { "${i++}" };
-        Timber.tag("Custom").d { "${i++}" };
+        d { "${i++}" }
+        Timber.d { "${i++}" }
+        Timber.tag("Custom").d { "${i++}" }
 
         assertThat(i).isEqualTo(0)
     }
@@ -136,9 +136,9 @@ class TimberKtTest {
         Timber.plant(timber.log.Timber.DebugTree())
         var i = 0
 
-        d { "${i++}" };
-        Timber.d { "${i++}" };
-        Timber.tag("Custom").d { "${i++}" };
+        d { "${i++}" }
+        Timber.d { "${i++}" }
+        Timber.tag("Custom").d { "${i++}" }
 
         assertThat(i).isEqualTo(3)
     }
