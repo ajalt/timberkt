@@ -79,41 +79,65 @@ class TimberKtTest {
 
         val e = Exception("e")
 
+        v(e)
         v(e) { "Verbose" }
+        Timber.v(e)
         Timber.v(e) { "Verbose" }
         Timber.tag("Custom").v(e) { "Verbose" }
+        d(e)
         d(e) { "Debug" }
+        Timber.d(e)
         Timber.d(e) { "Debug" }
         Timber.tag("Custom").d(e) { "Debug" }
+        i(e)
         i(e) { "Info" }
+        Timber.i(e)
         Timber.i(e) { "Info" }
         Timber.tag("Custom").i(e) { "Info" }
+        w(e)
         w(e) { "Warn" }
+        Timber.w(e)
         Timber.w(e) { "Warn" }
         Timber.tag("Custom").w(e) { "Warn" }
+        e(e)
         e(e) { "Error" }
+        Timber.e(e)
         Timber.e(e) { "Error" }
         Timber.tag("Custom").e(e) { "Error" }
+        wtf(e)
         wtf(e) { "Assert" }
+        Timber.wtf(e)
         Timber.wtf(e) { "Assert" }
         Timber.tag("Custom").wtf(e) { "Assert" }
 
         assertThat(messages).containsExactly(
                 Msg(2, "TimberKtTest", null, e),
                 Msg(2, "TimberKtTest", null, e),
+                Msg(2, "TimberKtTest", null, e),
+                Msg(2, "TimberKtTest", null, e),
                 Msg(2, "Custom", null, e),
+                Msg(3, "TimberKtTest", null, e),
+                Msg(3, "TimberKtTest", null, e),
                 Msg(3, "TimberKtTest", null, e),
                 Msg(3, "TimberKtTest", null, e),
                 Msg(3, "Custom", null, e),
                 Msg(4, "TimberKtTest", null, e),
                 Msg(4, "TimberKtTest", null, e),
+                Msg(4, "TimberKtTest", null, e),
+                Msg(4, "TimberKtTest", null, e),
                 Msg(4, "Custom", null, e),
+                Msg(5, "TimberKtTest", null, e),
+                Msg(5, "TimberKtTest", null, e),
                 Msg(5, "TimberKtTest", null, e),
                 Msg(5, "TimberKtTest", null, e),
                 Msg(5, "Custom", null, e),
                 Msg(6, "TimberKtTest", null, e),
                 Msg(6, "TimberKtTest", null, e),
+                Msg(6, "TimberKtTest", null, e),
+                Msg(6, "TimberKtTest", null, e),
                 Msg(6, "Custom", null, e),
+                Msg(7, "TimberKtTest", null, e),
+                Msg(7, "TimberKtTest", null, e),
                 Msg(7, "TimberKtTest", null, e),
                 Msg(7, "TimberKtTest", null, e),
                 Msg(7, "Custom", null, e)
