@@ -1,7 +1,6 @@
 package com.github.ajalt.timberkt
 
 import timber.log.Timber
-
 //
 // Static methods on the Timber object
 //

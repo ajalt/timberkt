@@ -1,32 +1,24 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'org.jetbrains.dokka-android'
+//apply plugin: 'org.jetbrains.dokka-android'
 apply plugin: 'com.github.dcendents.android-maven'
 
 buildscript {
-    repositories {
-        jcenter()
-    }
     dependencies {
-        classpath rootProject.ext.dokka
+        classpath deps.buildscript.dokka
     }
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion versions.minSdk
         versionCode Integer.parseInt(project.VERSION_CODE)
         versionName project.VERSION_NAME
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
-    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         test.java.srcDirs += 'src/test/kotlin'
@@ -34,13 +26,13 @@ android {
 }
 
 dependencies {
-    compile rootProject.ext.kotlinStdlib
-    compile rootProject.ext.timber
+    compile deps.kotlinStdlib
+    compile deps.timber
 
-    testCompile rootProject.ext.junit
-    testCompile(rootProject.ext.mockitoKotlin) { exclude module: 'kotlin-stdlib' }
-    testCompile rootProject.ext.assertj
-    testCompile rootProject.ext.roboelectric
+    testCompile deps.junit
+    testCompile(deps.mockitoKotlin) { exclude module: 'kotlin-stdlib' }
+    testCompile deps.assertj
+    testCompile deps.robolectric
 }
 
 task sourcesJar(type: Jar) {
@@ -48,12 +40,14 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
-task javadocJar(type: Jar, dependsOn: dokka) {
-    classifier = 'javadoc'
-    from dokka.outputDirectory
-}
+// Temporarily disable dokka due to a bug in the gradle plugin in version 0.9.13
+// https://github.com/Kotlin/dokka/issues/135
+//task javadocJar(type: Jar, dependsOn: dokka) {
+//    classifier = 'javadoc'
+//    from dokka.outputDirectory
+//}
 
 artifacts {
     archives sourcesJar
-    archives javadocJar
+//    archives javadocJar
 }

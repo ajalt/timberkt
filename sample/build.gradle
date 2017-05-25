@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
 
     defaultConfig {
         applicationId "com.github.ajalt.timberkt"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdkVersion
         versionCode Integer.parseInt(project.VERSION_CODE)
         versionName project.VERSION_NAME
     }
@@ -27,7 +27,7 @@ android {
 dependencies {
     compile project(':timberkt')
 
-    compile rootProject.ext.supportV7
-    compile rootProject.ext.kotlinStdlib
-    compile rootProject.ext.timber
+    compile deps.supportV7
+    compile deps.kotlinStdlib
+    compile deps.timber
 }
