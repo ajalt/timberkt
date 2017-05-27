@@ -1,4 +1,4 @@
-# Kotlin extensions for Timber
+# Kotlin logging extensions for Timber
 
 Jake Wharton's [Timber](https://github.com/JakeWharton/timber) library is great. It's a Java library with an API that works well for Java, but that isn't as idiomatic when used in Kotlin. 
 
@@ -21,7 +21,7 @@ d { "${intVar + 3} ${stringFun()}" }
 
 The same message and tags will be logged in all three cases. 
 
-The Kotlin extensions have the advantage of being more convenient to write, and are also more performant in some circumstances. The passed block is only evaluated if the message is logged, and even if the message is logged to multiple trees, the block is only evaluated once.
+The Kotlin extensions have the advantage of being more convenient to write, and are also more performant in some circumstances. The passed block is only evaluated if the message is logged, and even if the message is logged to multiple trees, the block is only evaluated once. All extension methods are inlined, so there is no method count penalty to using this library.
 
 Logging exception objects works the same way:
 
@@ -50,13 +50,13 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
-compile 'com.github.ajalt:timberkt:1.2.0'
+compile 'com.github.ajalt:timberkt:1.3.0'
 ```
 
 ## License
 
 ```
-Copyright 2016 AJ Alt
+Copyright 2017 AJ Alt
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
