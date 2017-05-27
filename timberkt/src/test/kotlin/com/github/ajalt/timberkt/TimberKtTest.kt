@@ -1,5 +1,6 @@
 package com.github.ajalt.timberkt
 
+import android.util.Log
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.After
 import org.junit.Before
@@ -46,24 +47,24 @@ class TimberKtTest {
         Timber.tag("Custom").wtf { "Assert" }
 
         assertThat(messages).containsExactly(
-                Msg(2, "TimberKtTest", "Verbose", null),
-                Msg(2, "TimberKtTest", "Verbose", null),
-                Msg(2, "Custom", "Verbose", null),
-                Msg(3, "TimberKtTest", "Debug", null),
-                Msg(3, "TimberKtTest", "Debug", null),
-                Msg(3, "Custom", "Debug", null),
-                Msg(4, "TimberKtTest", "Info", null),
-                Msg(4, "TimberKtTest", "Info", null),
-                Msg(4, "Custom", "Info", null),
-                Msg(5, "TimberKtTest", "Warn", null),
-                Msg(5, "TimberKtTest", "Warn", null),
-                Msg(5, "Custom", "Warn", null),
-                Msg(6, "TimberKtTest", "Error", null),
-                Msg(6, "TimberKtTest", "Error", null),
-                Msg(6, "Custom", "Error", null),
-                Msg(7, "TimberKtTest", "Assert", null),
-                Msg(7, "TimberKtTest", "Assert", null),
-                Msg(7, "Custom", "Assert", null)
+                Msg(Log.VERBOSE, "TimberKtTest", "Verbose", null),
+                Msg(Log.VERBOSE, "TimberKtTest", "Verbose", null),
+                Msg(Log.VERBOSE, "Custom", "Verbose", null),
+                Msg(Log.DEBUG, "TimberKtTest", "Debug", null),
+                Msg(Log.DEBUG, "TimberKtTest", "Debug", null),
+                Msg(Log.DEBUG, "Custom", "Debug", null),
+                Msg(Log.INFO, "TimberKtTest", "Info", null),
+                Msg(Log.INFO, "TimberKtTest", "Info", null),
+                Msg(Log.INFO, "Custom", "Info", null),
+                Msg(Log.WARN, "TimberKtTest", "Warn", null),
+                Msg(Log.WARN, "TimberKtTest", "Warn", null),
+                Msg(Log.WARN, "Custom", "Warn", null),
+                Msg(Log.ERROR, "TimberKtTest", "Error", null),
+                Msg(Log.ERROR, "TimberKtTest", "Error", null),
+                Msg(Log.ERROR, "Custom", "Error", null),
+                Msg(Log.ASSERT, "TimberKtTest", "Assert", null),
+                Msg(Log.ASSERT, "TimberKtTest", "Assert", null),
+                Msg(Log.ASSERT, "Custom", "Assert", null)
         )
     }
 
@@ -111,36 +112,36 @@ class TimberKtTest {
         Timber.tag("Custom").wtf(e) { "Assert" }
 
         assertThat(messages).containsExactly(
-                Msg(2, "TimberKtTest", null, e),
-                Msg(2, "TimberKtTest", null, e),
-                Msg(2, "TimberKtTest", null, e),
-                Msg(2, "TimberKtTest", null, e),
-                Msg(2, "Custom", null, e),
-                Msg(3, "TimberKtTest", null, e),
-                Msg(3, "TimberKtTest", null, e),
-                Msg(3, "TimberKtTest", null, e),
-                Msg(3, "TimberKtTest", null, e),
-                Msg(3, "Custom", null, e),
-                Msg(4, "TimberKtTest", null, e),
-                Msg(4, "TimberKtTest", null, e),
-                Msg(4, "TimberKtTest", null, e),
-                Msg(4, "TimberKtTest", null, e),
-                Msg(4, "Custom", null, e),
-                Msg(5, "TimberKtTest", null, e),
-                Msg(5, "TimberKtTest", null, e),
-                Msg(5, "TimberKtTest", null, e),
-                Msg(5, "TimberKtTest", null, e),
-                Msg(5, "Custom", null, e),
-                Msg(6, "TimberKtTest", null, e),
-                Msg(6, "TimberKtTest", null, e),
-                Msg(6, "TimberKtTest", null, e),
-                Msg(6, "TimberKtTest", null, e),
-                Msg(6, "Custom", null, e),
-                Msg(7, "TimberKtTest", null, e),
-                Msg(7, "TimberKtTest", null, e),
-                Msg(7, "TimberKtTest", null, e),
-                Msg(7, "TimberKtTest", null, e),
-                Msg(7, "Custom", null, e)
+                Msg(Log.VERBOSE, "TimberKtTest", null, e),
+                Msg(Log.VERBOSE, "TimberKtTest", null, e),
+                Msg(Log.VERBOSE, "TimberKtTest", null, e),
+                Msg(Log.VERBOSE, "TimberKtTest", null, e),
+                Msg(Log.VERBOSE, "Custom", null, e),
+                Msg(Log.DEBUG, "TimberKtTest", null, e),
+                Msg(Log.DEBUG, "TimberKtTest", null, e),
+                Msg(Log.DEBUG, "TimberKtTest", null, e),
+                Msg(Log.DEBUG, "TimberKtTest", null, e),
+                Msg(Log.DEBUG, "Custom", null, e),
+                Msg(Log.INFO, "TimberKtTest", null, e),
+                Msg(Log.INFO, "TimberKtTest", null, e),
+                Msg(Log.INFO, "TimberKtTest", null, e),
+                Msg(Log.INFO, "TimberKtTest", null, e),
+                Msg(Log.INFO, "Custom", null, e),
+                Msg(Log.WARN, "TimberKtTest", null, e),
+                Msg(Log.WARN, "TimberKtTest", null, e),
+                Msg(Log.WARN, "TimberKtTest", null, e),
+                Msg(Log.WARN, "TimberKtTest", null, e),
+                Msg(Log.WARN, "Custom", null, e),
+                Msg(Log.ERROR, "TimberKtTest", null, e),
+                Msg(Log.ERROR, "TimberKtTest", null, e),
+                Msg(Log.ERROR, "TimberKtTest", null, e),
+                Msg(Log.ERROR, "TimberKtTest", null, e),
+                Msg(Log.ERROR, "Custom", null, e),
+                Msg(Log.ASSERT, "TimberKtTest", null, e),
+                Msg(Log.ASSERT, "TimberKtTest", null, e),
+                Msg(Log.ASSERT, "TimberKtTest", null, e),
+                Msg(Log.ASSERT, "TimberKtTest", null, e),
+                Msg(Log.ASSERT, "Custom", null, e)
         )
     }
 
