@@ -1,14 +1,12 @@
 package com.github.ajalt.timberkt.sample
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.app.Activity
 import com.github.ajalt.timberkt.*
 
 
-class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+class MainActivity : Activity() {
+    override fun onResume() {
+        super.onResume()
 
         var i = 0
 

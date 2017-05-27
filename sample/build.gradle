@@ -27,7 +27,6 @@ android {
 dependencies {
     compile project(':timberkt')
 
-    compile deps.supportV7
     compile deps.kotlinStdlib
     compile deps.timber
 }
