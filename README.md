@@ -43,7 +43,7 @@ With the exception of long custom tags, none of the errors those checks look for
 
 ## Download
 
-The Kotlin extensions for Timber are distributed with [JitPack](https://jitpack.io/).
+The Kotlin extensions for Timber are distributed with [JitPack](https://jitpack.io/#ajalt/timberkt/1.3.0).
 
 ```groovy
 repositories {
@@ -52,6 +52,10 @@ repositories {
 
 compile 'com.github.ajalt:timberkt:1.3.0'
 ```
+
+## Documentation
+
+[The documentation is hosted online here](https://jitpack.io/com/github/ajalt/timberkt/master-1.2.0-g4971e87-7/javadoc/timberkt/com.github.ajalt.timberkt/index.html).
 
 ## License
 
