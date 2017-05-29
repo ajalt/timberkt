@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-//apply plugin: 'org.jetbrains.dokka-android'
+apply plugin: 'org.jetbrains.dokka-android'
 apply plugin: 'com.github.dcendents.android-maven'
 
 buildscript {
@@ -40,14 +40,12 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
-// Temporarily disable dokka due to a bug in the gradle plugin in version 0.9.13
-// https://github.com/Kotlin/dokka/issues/135
-//task javadocJar(type: Jar, dependsOn: dokka) {
-//    classifier = 'javadoc'
-//    from dokka.outputDirectory
-//}
+task javadocJar(type: Jar, dependsOn: dokka) {
+    classifier = 'javadoc'
+    from dokka.outputDirectory
+}
 
 artifacts {
     archives sourcesJar
-//    archives javadocJar
+    archives javadocJar
 }
