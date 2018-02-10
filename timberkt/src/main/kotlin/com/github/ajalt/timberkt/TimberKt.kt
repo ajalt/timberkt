@@ -40,7 +40,7 @@ object Timber {
     @JvmStatic inline fun wtf(t: Throwable, message: () -> String) = log { Timber.wtf(t, message()) }
     @JvmStatic inline fun wtf(t: Throwable) = Timber.wtf(t)
 
-    // These functions forward just to the real timber. They aren't necessary, but they allow method
+    // These functions just forward to the real timber. They aren't necessary, but they allow method
     // chaining like the normal Timber interface.
 
     /** A view into Timber's planted trees as a tree itself. */
@@ -57,6 +57,9 @@ object Timber {
 
     /** Set a one-time tag for use on the next logging call. */
     @JvmStatic inline fun uprootAll() = Timber.uprootAll()
+
+    /** A [Tree] for debug builds. Automatically infers the tag from the calling class. */
+    @JvmStatic inline fun DebugTree() = Timber.DebugTree()
 }
 
 //

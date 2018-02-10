@@ -1,7 +1,7 @@
 package com.github.ajalt.timberkt.sample
 
 import android.app.Application
-import timber.log.Timber
+import com.github.ajalt.timberkt.Timber
 
 class App : Application() {
     override fun onCreate() {

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
-data class Msg(val priority: Int, val tag: String?, val message: String?, val t: Throwable?)
+private data class Msg(val priority: Int, val tag: String?, val message: String?, val t: Throwable?)
 
 @RunWith(RobolectricTestRunner::class)
 @Config(manifest = Config.NONE)
@@ -22,7 +22,7 @@ class TimberKtTest {
     fun logMessages() {
         val messages = mutableListOf<Msg>()
         Timber.plant(object : timber.log.Timber.DebugTree() {
-            override fun log(priority: Int, tag: String?, message: String?, t: Throwable?) {
+            override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
                 messages.add(Msg(priority, tag, message, t))
             }
         })
@@ -72,7 +72,7 @@ class TimberKtTest {
     fun logExceptions() {
         val messages = mutableListOf<Msg>()
         Timber.plant(object : timber.log.Timber.DebugTree() {
-            override fun log(priority: Int, tag: String?, message: String?, t: Throwable?) {
+            override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
                 // Timber appends the error traceback to the message, so don't examine it
                 messages.add(Msg(priority, tag, null, t))
             }
