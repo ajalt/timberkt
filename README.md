@@ -50,12 +50,12 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
-compile 'com.github.ajalt:timberkt:1.4.0'
+implementation 'com.github.ajalt:timberkt:1.4.0'
 ```
 
 ## Documentation
 
-[The documentation is hosted online here](https://jitpack.io/com/github/ajalt/timberkt/master-1.4.0-g4971e87-7/javadoc/timberkt/com.github.ajalt.timberkt/index.html).
+[The documentation is hosted online here](https://jitpack.io/com/github/ajalt/timberkt/1.4.0/javadoc/timberkt/com.github.ajalt.timberkt/index.html).
 
 ## License
 
