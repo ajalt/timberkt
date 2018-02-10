@@ -1,40 +1,40 @@
 buildscript {
     ext.versions = [
             minSdk        : 9,
-            targetSdk     : 25,
-            compileSdk    : 25,
-            buildTools    : '25.0.3',
+            compileSdk    : 27,
+            buildTools    : '27.0.3',
 
-            kotlin        : '1.1.2-3',
-            supportLibrary: '25.3.1',
+            kotlin        : '1.2.21',
+            supportLibrary: '27.0.2',
     ]
 
     ext.deps = [
             buildscript  : [
-                    dokka: 'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.14',
+                    dokka: 'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.15',
             ],
 
             // library dependencies
             kotlinStdlib : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
-            timber       : 'com.jakewharton.timber:timber:4.5.1',
+            timber       : 'com.jakewharton.timber:timber:4.6.0',
 
             // test dependencies
-            robolectric  : 'org.robolectric:robolectric:3.2.2',
+            robolectric  : 'org.robolectric:robolectric:3.5',
             junit        : 'junit:junit:4.12',
             mockito      : 'org.mockito:mockito-core:2.8.9',
-            mockitoKotlin: 'com.nhaarman:mockito-kotlin:1.4.0',
+            mockitoKotlin: 'com.nhaarman:mockito-kotlin:1.5.0',
             assertj      : 'org.assertj:assertj-core:2.7.0',
     ]
 
     repositories {
+        google()
         mavenCentral()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
     }
 }
 
@@ -43,12 +43,14 @@ subprojects {
     group = GROUP
 
     repositories {
+        google()
         mavenCentral()
         jcenter()
     }
 
     buildscript {
         repositories {
+            google()
             mavenCentral()
             jcenter()
         }
