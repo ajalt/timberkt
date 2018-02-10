@@ -43,24 +43,24 @@ With the exception of long custom tags, none of the errors those checks look for
 
 ## Download
 
-The Kotlin extensions for Timber are distributed with [JitPack](https://jitpack.io/#ajalt/timberkt/1.3.0).
+The Kotlin extensions for Timber are distributed with [JitPack](https://jitpack.io/#ajalt/timberkt/1.4.0).
 
 ```groovy
 repositories {
     maven { url "https://jitpack.io" }
 }
 
-compile 'com.github.ajalt:timberkt:1.3.0'
+compile 'com.github.ajalt:timberkt:1.4.0'
 ```
 
 ## Documentation
 
-[The documentation is hosted online here](https://jitpack.io/com/github/ajalt/timberkt/master-1.2.0-g4971e87-7/javadoc/timberkt/com.github.ajalt.timberkt/index.html).
+[The documentation is hosted online here](https://jitpack.io/com/github/ajalt/timberkt/master-1.4.0-g4971e87-7/javadoc/timberkt/com.github.ajalt.timberkt/index.html).
 
 ## License
 
 ```
-Copyright 2017 AJ Alt
+Copyright 2017-2018 AJ Alt
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
