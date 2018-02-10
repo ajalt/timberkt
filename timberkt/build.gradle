@@ -26,13 +26,13 @@ android {
 }
 
 dependencies {
-    compile deps.kotlinStdlib
-    compile deps.timber
+    api deps.kotlinStdlib
+    api deps.timber
 
-    testCompile deps.junit
-    testCompile(deps.mockitoKotlin) { exclude module: 'kotlin-stdlib' }
-    testCompile deps.assertj
-    testCompile deps.robolectric
+    testImplementation deps.junit
+    testImplementation(deps.mockitoKotlin) { exclude module: 'kotlin-stdlib' }
+    testImplementation deps.assertj
+    testImplementation deps.robolectric
 }
 
 task sourcesJar(type: Jar) {
