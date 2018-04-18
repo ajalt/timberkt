@@ -11,6 +11,7 @@ buildscript {
     ext.deps = [
             buildscript  : [
                     dokka: 'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16',
+                    bintray: 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0',
             ],
 
             // library dependencies

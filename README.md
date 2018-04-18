@@ -43,13 +43,13 @@ With the exception of long custom tags, none of the errors those checks look for
 
 ## Download
 
-The Kotlin extensions for Timber are distributed with [JitPack](https://jitpack.io/#ajalt/timberkt/1.4.0).
+The Kotlin extensions for Timber are distributed with [JCenter](https://bintray.com/ajalt/maven/timberkt) and
+[JitPack](https://jitpack.io/#ajalt/timberkt/1.4.0).
+
+Make sure one either JCenter or JitPack is included in your repository
+list, then you can add timberkt to your project:
 
 ```groovy
-repositories {
-    maven { url "https://jitpack.io" }
-}
-
 implementation 'com.github.ajalt:timberkt:1.4.0'
 ```
 

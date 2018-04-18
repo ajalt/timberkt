@@ -2,10 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'org.jetbrains.dokka-android'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
 buildscript {
     dependencies {
         classpath deps.buildscript.dokka
+        classpath deps.buildscript.bintray
     }
 }
 
@@ -48,4 +50,46 @@ task javadocJar(type: Jar, dependsOn: dokka) {
 artifacts {
     archives sourcesJar
     archives javadocJar
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection "https://github.com/ajalt/timberkt.git"
+                url "https://github.com/ajalt/timberkt"
+            }
+            developers {
+                developer {
+                    name 'AJ Alt'
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintray.user') ? project.property('bintray.user') : ''
+    key = project.hasProperty('bintray.apikey') ? project.property('bintray.apikey') : ''
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = 'timberkt'
+        licenses = ['Apache-2.0']
+        vcsUrl = "https://github.com/ajalt/timberkt.git"
+
+        version {
+            name = project.version
+            desc = project.description
+            released = new Date()
+            vcsTag = project.version
+        }
+    }
 }
