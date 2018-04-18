@@ -11,21 +11,28 @@ import org.robolectric.annotation.Config
 
 private data class Msg(val priority: Int, val tag: String?, val message: String?, val t: Throwable?)
 
+private fun plantTestTree(ignoreMessage: Boolean): List<Msg> {
+    val messages = mutableListOf<Msg>()
+    Timber.plant(object : timber.log.Timber.DebugTree() {
+        override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+            messages.add(Msg(priority, tag, if (ignoreMessage) null else message, t))
+        }
+    })
+    return messages
+}
+
 @RunWith(RobolectricTestRunner::class)
 @Config(manifest = Config.NONE)
 class TimberKtTest {
-    @Before @After fun setup() {
+    @Before
+    @After
+    fun setup() {
         Timber.uprootAll()
     }
 
     @Test
     fun logMessages() {
-        val messages = mutableListOf<Msg>()
-        Timber.plant(object : timber.log.Timber.DebugTree() {
-            override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-                messages.add(Msg(priority, tag, message, t))
-            }
-        })
+        val messages = plantTestTree(ignoreMessage = false)
 
         v { "Verbose" }
         Timber.v { "Verbose" }
@@ -70,13 +77,7 @@ class TimberKtTest {
 
     @Test
     fun logExceptions() {
-        val messages = mutableListOf<Msg>()
-        Timber.plant(object : timber.log.Timber.DebugTree() {
-            override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-                // Timber appends the error traceback to the message, so don't examine it
-                messages.add(Msg(priority, tag, null, t))
-            }
-        })
+        val messages = plantTestTree(ignoreMessage = true)
 
         val e = Exception("e")
 
@@ -142,6 +143,51 @@ class TimberKtTest {
                 Msg(Log.ASSERT, "TimberKtTest", null, e),
                 Msg(Log.ASSERT, "TimberKtTest", null, e),
                 Msg(Log.ASSERT, "Custom", null, e)
+        )
+    }
+
+    @Test
+    fun logNullExceptions() {
+        val messages = plantTestTree(ignoreMessage = true)
+
+        v(null) { "Verbose" }
+        Timber.v(null) { "Verbose" }
+        Timber.tag("Custom").v(null) { "Verbose" }
+        d(null) { "Debug" }
+        Timber.d(null) { "Debug" }
+        Timber.tag("Custom").d(null) { "Debug" }
+        i(null) { "Info" }
+        Timber.i(null) { "Info" }
+        Timber.tag("Custom").i(null) { "Info" }
+        w(null) { "Warn" }
+        Timber.w(null) { "Warn" }
+        Timber.tag("Custom").w(null) { "Warn" }
+        e(null) { "Error" }
+        Timber.e(null) { "Error" }
+        Timber.tag("Custom").e(null) { "Error" }
+        wtf(null) { "Assert" }
+        Timber.wtf(null) { "Assert" }
+        Timber.tag("Custom").wtf(null) { "Assert" }
+
+        assertThat(messages).containsExactly(
+                Msg(Log.VERBOSE, "TimberKtTest", null, null),
+                Msg(Log.VERBOSE, "TimberKtTest", null, null),
+                Msg(Log.VERBOSE, "Custom", null, null),
+                Msg(Log.DEBUG, "TimberKtTest", null, null),
+                Msg(Log.DEBUG, "TimberKtTest", null, null),
+                Msg(Log.DEBUG, "Custom", null, null),
+                Msg(Log.INFO, "TimberKtTest", null, null),
+                Msg(Log.INFO, "TimberKtTest", null, null),
+                Msg(Log.INFO, "Custom", null, null),
+                Msg(Log.WARN, "TimberKtTest", null, null),
+                Msg(Log.WARN, "TimberKtTest", null, null),
+                Msg(Log.WARN, "Custom", null, null),
+                Msg(Log.ERROR, "TimberKtTest", null, null),
+                Msg(Log.ERROR, "TimberKtTest", null, null),
+                Msg(Log.ERROR, "Custom", null, null),
+                Msg(Log.ASSERT, "TimberKtTest", null, null),
+                Msg(Log.ASSERT, "TimberKtTest", null, null),
+                Msg(Log.ASSERT, "Custom", null, null)
         )
     }
 
