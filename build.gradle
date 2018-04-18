@@ -4,25 +4,25 @@ buildscript {
             compileSdk    : 27,
             buildTools    : '27.0.3',
 
-            kotlin        : '1.2.21',
-            supportLibrary: '27.0.2',
+            kotlin        : '1.2.31',
+            supportLibrary: '27.1.1',
     ]
 
     ext.deps = [
             buildscript  : [
-                    dokka: 'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.15',
+                    dokka: 'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16',
             ],
 
             // library dependencies
             kotlinStdlib : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
-            timber       : 'com.jakewharton.timber:timber:4.6.0',
+            timber       : 'com.jakewharton.timber:timber:4.7.0',
 
             // test dependencies
-            robolectric  : 'org.robolectric:robolectric:3.5',
+            robolectric  : 'org.robolectric:robolectric:3.8',
             junit        : 'junit:junit:4.12',
-            mockito      : 'org.mockito:mockito-core:2.8.9',
+            mockito      : 'org.mockito:mockito-core:2.18.0',
             mockitoKotlin: 'com.nhaarman:mockito-kotlin:1.5.0',
-            assertj      : 'org.assertj:assertj-core:2.7.0',
+            assertj      : 'org.assertj:assertj-core:3.9.1',
     ]
 
     repositories {
@@ -32,9 +32,9 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
