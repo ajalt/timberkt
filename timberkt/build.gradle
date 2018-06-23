@@ -52,44 +52,22 @@ artifacts {
     archives javadocJar
 }
 
-install {
-    repositories.mavenInstaller {
-        pom.project {
-            licenses {
-                license {
-                    name 'The Apache Software License, Version 2.0'
-                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    distribution 'repo'
-                }
-            }
-            scm {
-                connection "https://github.com/ajalt/timberkt.git"
-                url "https://github.com/ajalt/timberkt"
-            }
-            developers {
-                developer {
-                    name 'AJ Alt'
-                }
-            }
-        }
+ext {
+    pkgName = 'timberkt'
+    pkgDesc = 'Easy Android logging with Kotlin and Timber '
+    githubRepo = 'github.com/ajalt/timberkt'
+    pkgLicense = 'Apache-2.0'
+    pkgLicenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    devInfo = {
+        id 'ajalt'
+        name 'AJ Alt'
+        url 'https://github.com/ajalt'
     }
+    bintrayUser = System.getenv('BINTRAY_USER')
+    bintrayKey = System.getenv('BINTRAY_API_KEY')
+    mavenUserToken = System.getenv('MAVEN_USER_TOKEN')
+    mavenUserPass = System.getenv('MAVEN_USER_PASS')
+    deployDryRun = false
 }
 
-bintray {
-    user = project.hasProperty('bintray.user') ? project.property('bintray.user') : ''
-    key = project.hasProperty('bintray.apikey') ? project.property('bintray.apikey') : ''
-    configurations = ['archives']
-    pkg {
-        repo = 'maven'
-        name = 'timberkt'
-        licenses = ['Apache-2.0']
-        vcsUrl = "https://github.com/ajalt/timberkt.git"
-
-        version {
-            name = project.version
-            desc = project.description
-            released = new Date()
-            vcsTag = project.version
-        }
-    }
-}
+apply from: new File(rootDir, 'deploy.gradle')
