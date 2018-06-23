@@ -45,15 +45,15 @@ With the exception of long custom tags, none of the errors those checks look for
 
 The Kotlin extensions for Timber are distributed with Maven Central, 
 [JCenter](https://bintray.com/ajalt/maven/timberkt) and
-[JitPack](https://jitpack.io/#ajalt/timberkt/1.5.0).
+[JitPack](https://jitpack.io/#ajalt/timberkt/1.5.1).
 
 ```groovy
-implementation 'com.github.ajalt:timberkt:1.5.0'
+implementation 'com.github.ajalt:timberkt:1.5.1'
 ```
 
 ## Documentation
 
-[The documentation is hosted online here](https://jitpack.io/com/github/ajalt/timberkt/1.5.0/javadoc/timberkt/com.github.ajalt.timberkt/index.html).
+[The documentation is hosted online here](https://jitpack.io/com/github/ajalt/timberkt/1.5.1/javadoc/timberkt/com.github.ajalt.timberkt/index.html).
 
 ## License
 
