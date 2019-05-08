@@ -16,7 +16,7 @@ buildscript {
 
             // library dependencies
             kotlinStdlib : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
-            timber       : 'com.jakewharton.timber:timber:4.7.0',
+            timber       : 'com.jakewharton.timber:timber:4.7.1',
 
             // test dependencies
             robolectric  : 'org.robolectric:robolectric:3.8',
